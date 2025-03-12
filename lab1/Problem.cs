@@ -27,16 +27,15 @@ namespace lab1
         {
             Items.Sort((x, y) => y.Afordability.CompareTo(x.Afordability));
             Result result = new Result();
-            for (int i = 0; i < Items.Count; i++)
+            for (int i = 0; i < quantity; i++)
             {
-                if (Items[i].Weight + result.SumWeight + Items[i].Value+result.SumValue > capacity)
+                if (Items[i].Weight + result.SumWeight <= capacity)
                 {
-                    break;
+                    result.Numbers.Add(items[i].Id);
+                    result.SumValue += Items[i].Value;
+                    result.SumWeight += Items[i].Weight;
+                    Items[i].IsTaken = true;
                 }
-                result.Numbers.Add(items[i].Id);
-                result.SumValue += Items[i].Value;
-                result.SumWeight += Items[i].Weight;
-                Items[i].IsTaken = true; 
             }
             return result;
         }
