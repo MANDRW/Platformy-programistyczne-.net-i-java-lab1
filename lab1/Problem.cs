@@ -29,14 +29,14 @@ namespace lab1
         {
             Items.Sort((x, y) => y.Afordability.CompareTo(x.Afordability));
             Result result = new Result();
-            for (int i = 0; i < quantity; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 if (Items[i].Weight + result.SumWeight <= capacity)
                 {
                     result.Numbers.Add(items[i].Id);
-                    result.SumValue += Items[i].Value;
-                    result.SumWeight += Items[i].Weight;
-                    Items[i].IsTaken = true;
+                    result.SumValue += items[i].Value;
+                    result.SumWeight += items[i].Weight;
+                    items[i].IsTaken = true;
                 }
             }
             return result;
@@ -54,6 +54,12 @@ namespace lab1
             get { return items; }
             set { this.items = value; }
         }
+
+        public void Add(Przedmiot item)
+        {
+                items.Add(item);
+        }
+
 
         public override string ToString()
         {

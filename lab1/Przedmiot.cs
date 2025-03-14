@@ -21,7 +21,7 @@ namespace lab1
             this.id = id;
             this.value = value;
             this.weight = weight;
-            this.afordability = value / weight;
+            this.afordability =(float) value / weight;
             this.isTaken = false;
         }
 
